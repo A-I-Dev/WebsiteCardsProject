@@ -42,88 +42,145 @@ $fluentDarkGray: #161514;
 body {
     font-family: $fontFamily;
     background: $fluentDarkGray;
-    padding: 20px;
+    padding: 60px 20px 20px;
 }
+
 
 
 
 // --- MAIN STYLING --- //
 
-#content-wrap {
-    margin: auto;
-    max-width: 640px;
-    min-height: 100vh;
+#page-content {
+    position: relative;
     display: grid;
-    grid-gap: 20px;
     justify-content: center;
     align-items: center;    
     grid-template-columns: 1fr;
+    min-height: 100vh;    
 }
-#card-wrap {
-    position: relative;
-    padding-top: 65.625%;
-    border-radius: 15px;
-    overflow: hidden;
 
-    &:hover #card-background {
-        transform: rotate(10deg) scale(1.2);
-    }
-}
-#card-background {
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    transition: transform .2s ease-in-out;
-    background: url("https://source.unsplash.com/gzhyKEo_cbU") no-repeat center/cover;
-    z-index: 1;
-}
-.social-link {
-    position: absolute;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    z-index: 3;
-    
-    &.codepen {
-        background: #ffdc40e3;
-        bottom: 90px;
-    }
-    &.linkedin {
-        background: #007cb5e3;
-        bottom: 20px;
-    }
-    &:hover {
-        border-radius: 0;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        cursor: pointer;
-        z-index: 2;
+.card-item {
+    display: none;
 
-        i {
-            display: contents;
+    &.visible {
+        display: block;
+    }
+}
+
+// --- MAIN NAV --- //
+
+#main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    #card-link-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        .card-link {
+            display: block;
+            padding: 20px 20px 13px;
+            color: #e9e9e9;
+            cursor: pointer;
+
+            &:hover {
+                background: #55514e;
+            }
+            &:after {
+                content: "";
+                display: block;
+                width: 40px;
+                height: 2px;
+                background: #e9e9e9;
+                margin: 5px auto 0;
+                opacity: 0;
+            }
+            &.visible:after {
+                opacity: 1;
+            }
         }
     }
+}
 
-    a {
-        display: grid;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
 
-        i {
-            font-size: 172px;
-            color: #fff;
-            display: none;
 
-            &:before {
-                opacity: .8;
+//////////////////////////
+// -- CVCardProfile -- //
+////////////////////////
+
+#cv-card {
+    margin: auto;
+    max-width: 640px;
+    height: 100%;
+
+    #card-wrap {
+        position: relative;
+        padding-top: 65.625%;
+        border-radius: 15px;
+        overflow: hidden;
+    
+        &:hover #card-background {
+            transform: rotate(10deg) scale(1.2);
+        }
+    }
+    #card-background {
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        width: 120%;
+        height: 120%;
+        transition: transform .2s ease-in-out;
+        background: url("https://source.unsplash.com/gzhyKEo_cbU") no-repeat center/cover;
+        z-index: 1;
+    }
+    .social-link {
+        position: absolute;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        z-index: 3;
+        
+        &.codepen {
+            background: #ffdc40e3;
+            bottom: 90px;
+        }
+        &.linkedin {
+            background: #007cb5e3;
+            bottom: 20px;
+        }
+        &:hover {
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            cursor: pointer;
+            z-index: 2;
+    
+            i {
+                display: contents;
+            }
+        }
+    
+        a {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+    
+            i {
+                font-size: 172px;
+                color: #fff;
+                display: none;
+    
+                &:before {
+                    opacity: .8;
+                }
             }
         }
     }
